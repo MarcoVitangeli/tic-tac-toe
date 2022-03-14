@@ -5,7 +5,7 @@ import "./Board.css"
 const WINNER_INDEX = 1;
 const NUMBER_OF_ROUNDS = 0;
 
-function BoardElement({currentPlayer, toggle}) {
+function BoardElement({ currentPlayer, toggle }) {
     const [player, setPlayer] = useState("");
 
     const handleClick = () => {
@@ -77,15 +77,15 @@ export function Board() {
     );
 }
 
-function checkWinner()  {
+function checkWinner() {
     const elements = document.querySelectorAll('span');
 
     const text = Array.from(elements)
         .map(domNode => domNode.innerText);
 
     const numOfRounds = text
-        .map(e => e !== ""? 1:0)
-        .reduce((x,y) => x+y, 0);
+        .map(e => e !== "" ? 1 : 0)
+        .reduce((x, y) => x + y, 0);
 
     function checkTuple(t1, t2, t3) {
         if (t1 === "" || t2 === "" || t3 === "") {
@@ -101,20 +101,20 @@ function checkWinner()  {
 
     let result = [];
     // rows
-    result.push(checkTuple(text[0],text[1],text[2]));
-    result.push(checkTuple(text[3],text[4],text[5]));
-    result.push(checkTuple(text[6],text[7],text[8]));
+    result.push(checkTuple(text[0], text[1], text[2]));
+    result.push(checkTuple(text[3], text[4], text[5]));
+    result.push(checkTuple(text[6], text[7], text[8]));
 
     //columns
-    result.push(checkTuple(text[0],text[3],text[6]));
-    result.push(checkTuple(text[1],text[4],text[7]));
-    result.push(checkTuple(text[2],text[5],text[8]));
+    result.push(checkTuple(text[0], text[3], text[6]));
+    result.push(checkTuple(text[1], text[4], text[7]));
+    result.push(checkTuple(text[2], text[5], text[8]));
 
     // diagonals
-    result.push(checkTuple(text[0],text[4],text[8]));
-    result.push(checkTuple(text[2],text[4],text[6]));
+    result.push(checkTuple(text[0], text[4], text[8]));
+    result.push(checkTuple(text[2], text[4], text[6]));
 
-    for(let tuple of result) {
+    for (let tuple of result) {
         if (tuple[0]) {
             return [numOfRounds, tuple[1]];
         }
