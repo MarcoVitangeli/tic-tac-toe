@@ -1,0 +1,39 @@
+:root {
+    --element-size: 100px;
+}
+
+.BoardHeader {
+    font-family: "Ubuntu Mono";
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #232b2b;
+}
+
+.Board {
+    margin-top: calc(2*var(--element-size));
+    display: grid;
+    grid-template-columns: repeat(3, var(--element-size));
+    gap: 10px;
+}
+
+.BoardElement {
+    width: var(--element-size);
+    height: var(--element-size);
+    background-color: #0FFF50;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
